@@ -157,8 +157,9 @@ print(lo)
 
 
 
-# stack
-#------- traversing---------#
+##################################### STACK ########################################
+
+                #------- traversing---------#
 #(1).creating nodes
 # we can create individual nodes like this
 class Node:
@@ -168,64 +169,7 @@ class Node:
 
 # while creating a node intially its reference is given as null/none
 
-        
-node1 = Node(10)
-print(node1) 
-
 #(2) .to connect individual nodes wee need a  another class 
-class LinkedList:
-    def __init__(self):
-        self.head = None
-    def print_LL(self):
-        if self.head is None:
-            print('linked list is empty')
-        else:
-            n = self.head
-            while n is not None:
-                print(n.data)
-                n = n.ref
-
-LL1 = LinkedList()
-LL1.print_LL()
-
-#---------insertion---------#
-# add-begin
-
-class Node:
-    def __init__(self,data):
-        self.data = data
-        self.ref = None
-
-class LinkedList:
-    def __init__(self):
-        self.head = None
-    def print_LL(self):
-        if self.head is None:
-            print('Linked list is empty')
-        else:
-            n = self.head
-            while n is not None:
-                print(n.data)
-                n = n.ref 
-    def add_begin(self,data):
-        new_node = Node(data)
-        new_node.ref = self.head
-        self.head = new_node
-
-LL1 = LinkedList()
-LL1.add_begin(10)
-LL1.add_begin(20)
-LL1.add_begin(30)
-LL1.print_LL()
-
-        
-        
-# add-end
-class Node:
-    def __init__(self,data):
-        self.data = data
-        self.ref = None
-
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -237,10 +181,15 @@ class LinkedList:
             while n is not None:
                 print(n.data,'---->',end="")
                 n = n.ref 
+
+                #---------insertion---------#
+        # add-begin        
     def add_begin(self,data):
         new_node = Node(data)
         new_node.ref = self.head
         self.head = new_node
+
+        # add-end
     def add_end(self,data):
         new_node = Node(data)
         if self.head is None:
@@ -248,24 +197,118 @@ class LinkedList:
             print('node is added at the empty linked list')
         else:
             n = self.head
-            while n is not None:
+            while n.ref is not None:
                 n = n.ref
-            n = new_node
+            n.ref = new_node
+            
+             # in between nodes
+        # add_after
+    def add_after(self,data,x):
+        n = self.head
+        while n is not None:
+            if x == n.data:
+              break
+            n = n.ref
+
+        if n is None:
+            print('node is not present in LL')
+        else:
+            new_node = Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node 
+
+        # add before    
+    def add_before(self,data,x):
+        if self.head is None:
+            print('Linked list is empty')
+            return
+        if self.head.data == x:
+            new_node = Node(data)
+            new_node.ref = self.head
+            self.head = new_node
+            return 
+        n = self.head
+        while n.ref is not None:
+            if n.ref.data == x:
+                break
+            n = n.ref
+
+        if n.ref is None:
+            print('node is not found')
+        else:
+            new_node = Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node
+    def insert_empty(self,data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            print('linked list is not empty')
+
+               #---------Deletion---------#
+
+    def delete_begin(self):
+        if self.head is None:
+            print('Linked list is empty')
+        else:
+            self.head = self.head.ref
+
+    def delete_end(self):
+        if self.head is None:
+            print('linked list is empty')
+        elif self.head.ref is None:
+            self.head = None
+        else:
+            n = self.head
+            while n.ref.ref is not None:
+                n = n.ref
+            n.ref = None   
+
+    # delete at any position you want
+    def delete_by_value(self,x):
+        if self.head is None:
+            print('Linked list empty,cant delete')
+            return
+        if x == self.head.data:
+            self.head = self.head.ref
+            return
+        n = self.head
+        while n.ref is not None:
+            if x == n.ref.data:
+                break
+            n = n.ref
+        if n.ref is None:
+            print('node is not present')
+        else:
+            n.ref = n.ref.ref
+
+
+    
+             
+
 
 
 LL1 = LinkedList()
-LL1.add_end(500)
-LL1.add_begin(10)  
+LL1.add_end(50)
+LL1.add_end(40)
+LL1.add_end(30)
+LL1.add_end(60)
+LL1.add_after(35,30)
+LL1.add_before(25,30)
 LL1.add_begin(20)
-LL1.add_begin(30)
-LL1.add_begin(40) 
+LL1.add_begin(10)
+LL1.insert_empty(100)
+LL1.delete_begin()
+LL1.delete_end()
+LL1.delete_by_value(35)
+LL1.delete_by_value(50)
+LL1.delete_by_value(20)
 LL1.print_LL()
 
-        
-        
 
-
-             
          
+        
+ 
         
 # end
