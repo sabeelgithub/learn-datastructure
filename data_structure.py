@@ -1,4 +1,5 @@
-# list
+###################### LIST #######################
+
 lo = [1,2,3,'one','two','three',None,True,False]
 for i in lo:
     if isinstance(i,int):
@@ -39,18 +40,21 @@ print(lo)
 lo = [1,2,3,'one','two','three',None,True,False,10.5,9.8]
 lo = [i for i in lo if  not isinstance(i,float)]
 print(lo)
-# end                   
-# end    
+# end
+                   
+################################# END LIST ####################    
 
-#dictionary
+########################### DICTIONARY ################################
+
 # two ways of creating dictionary using dict constructor
 dict1 = dict(name='abu',age=12)
 print(dict1)
 dict2 = dict({'name':'abu','age':18})
 print(dict2)
 # end
-# end  
+######################### END DICTIONARY ########################  
 
+############################# STACK ############################
 
 # stack implementation using list
 stack = []
@@ -151,13 +155,15 @@ def reversing_string_with_stack(string):
 
 lo =reversing_string_with_stack('hello world')
 print(lo)
-# end
+
+
+######################## END STACK ######################
 
 
 
 
 
-##################################### STACK ########################################
+##################################### LINKED LIST ########################################
 
                 #------- traversing---------#
 #(1).creating nodes
@@ -311,4 +317,4 @@ LL1.print_LL()
         
  
         
-# end
+####################### END LINKED LIST ############################
