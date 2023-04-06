@@ -165,8 +165,12 @@ print(lo)
 
 ##################################### LINKED LIST ########################################
 
+#(1).singly linked list
+
+
+
                 #------- traversing---------#
-#(1).creating nodes
+#creating nodes
 # we can create individual nodes like this
 class Node:
     def __init__(self,data):
@@ -175,7 +179,7 @@ class Node:
 
 # while creating a node intially its reference is given as null/none
 
-#(2) .to connect individual nodes wee need a  another class 
+#to connect individual nodes wee need a  another class 
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -185,7 +189,7 @@ class LinkedList:
         else:
             n = self.head
             while n is not None:
-                print(n.data,'---->',end="")
+                print(n.data,'---->',end=" ")
                 n = n.ref 
 
                 #---------insertion---------#
@@ -310,6 +314,45 @@ LL1.delete_end()
 LL1.delete_by_value(35)
 LL1.delete_by_value(50)
 LL1.delete_by_value(20)
+LL1.print_LL()
+
+#(2). doubly linked list
+
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.nref = None
+        self.pref = None
+
+class doublyLL:
+    def __init__(self):
+        self.head = None
+          
+        #--------------- traversing-----------#
+
+    # front-ward traversing
+    def print_LL(self):
+        if self.head == None:
+            print('Linked list is empty')
+        else:
+            n = self.head
+            while n is not None:
+                print(n.data,'---->',end=" ")
+            n = n.nref
+
+    # back-ward traversing    
+    def print_LL_reverse(self):
+        if self.head == None:
+            print('Linked list is empty')
+        else:
+            n = self.head
+            while n.nref is not None:
+                n = n.nref
+            while n is not None:
+                print(n.data,'------>',end =" ")
+            n = n.pref
+
+LL1 = doublyLL()
 LL1.print_LL()
 
 
