@@ -299,22 +299,22 @@ class LinkedList:
 
 
 
-LL1 = LinkedList()
-LL1.add_end(50)
-LL1.add_end(40)
-LL1.add_end(30)
-LL1.add_end(60)
-LL1.add_after(35,30)
-LL1.add_before(25,30)
-LL1.add_begin(20)
-LL1.add_begin(10)
-LL1.insert_empty(100)
-LL1.delete_begin()
-LL1.delete_end()
-LL1.delete_by_value(35)
-LL1.delete_by_value(50)
-LL1.delete_by_value(20)
-LL1.print_LL()
+SLL1 = LinkedList()
+SLL1.add_end(50)
+SLL1.add_end(40)
+SLL1.add_end(30)
+SLL1.add_end(60)
+SLL1.add_after(35,30)
+SLL1.add_before(25,30)
+SLL1.add_begin(20)
+SLL1.add_begin(10)
+SLL1.insert_empty(100)
+SLL1.delete_begin()
+SLL1.delete_end()
+SLL1.delete_by_value(35)
+SLL1.delete_by_value(50)
+SLL1.delete_by_value(20)
+SLL1.print_LL()
 
 #(2). doubly linked list
 
@@ -351,9 +351,46 @@ class doublyLL:
             while n is not None:
                 print(n.data,'------>',end =" ")
             n = n.pref
+    
+    # insertion when linked list is empty
+    def insert_empty(self,data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            print('Linked List is not empty')
+    
+    # add begin
+    def add_begin(self,data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.nref = self.head
+            self.head.pref = new_node
+            self.head = new_node
+    
+    # add end
+    def add_end(self,data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            n = self.head
+            while n.nref is not None:
+                n = n.nref
+            n.nref = new_node
+            new_node.pref = n
 
-LL1 = doublyLL()
-LL1.print_LL()
+
+DLL1 = doublyLL()
+DLL1.insert_empty(10)
+DLL1.add_begin(5)
+DLL1.add_begin(0)
+DLL1.insert_empty(15)
+DLL1.add_end(20)
+DLL1.print_LL()
+DLL1.print_LL_reverse()
 
 
          
