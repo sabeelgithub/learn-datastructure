@@ -664,5 +664,183 @@ print(mun.find('NAVAR'))
 print(mun.index('AVAR'))
 
 
+# isalnum() = it return true if all characters in the string is alpha numeric
+print(mun.isalnum())
+
+# isalpha() = it return true if all characters in the string are alphabet
+print(mun.isalpha())
+
+lo = '101'
+# isdecimal() = it return true if all characters in the string are decimal
+print(lo.isdecimal())
+
+# isdigit() = it return true if all characters in the string are digits
+print(lo.isdigit())
+
+# isdigit() = it return true if all characters in the string have white space
+print(mun.isspace())
+
+
+# removing all vowels in the strings
+
+str = input('Enter the string :')
+
+vowels_srtings = 'aeiouAEIOU'
+
+for i in str:
+    if i  in vowels_srtings:
+        str = str.replace(i,'')
+
+print('result after removing vowels :',str)
+
+#removing all  characters in the string except vowels 
+
+str = input('Enter the string :')
+
+vowels_srtings = 'aeiouAEIOU'
+
+for i in str:
+    if i  not in vowels_srtings:
+        str = str.replace(i,'')
+
+print(' vowels in the string are:',str)
+
+
+def removing_vowels(str):
+    vowel_string = 'aeiouAEIOU'
+    for i in str:
+        if i in vowel_string:
+            str = str.replace(i,'')
+
+    
+    print('result after removing voewls are :',str)
+    return
+
+removing_vowels('sabeel')
+
+
+def finding_vowels(str):
+    vowel_string = 'aeiouAEIOU'
+    for i in str:
+        if i not in vowel_string:
+            str = str.replace(i,'')
+
+    
+    print('vowels are :',str)
+    return
+
+finding_vowels('sabeel')
+
+
+
+# finding maximum lengthed word in the string
+
+
+str = input('enter the the string you want :')
+
+s=str.split()
+max = 0
+max_word = ''
+for i in s:
+    if len(i) > max:
+        max = len(i)
+        max_word = i
+
+print('maximun length word is \'{}\' '.format(max_word),'and its length is {}.'.format(max)) 
+
+
+def maximum_lengthed_word(str):
+    s = str.split()
+    max = 0
+    max_word = ''
+    for i in s:
+        if len(i) > max:
+            max = len(i)
+            max_word = i
+    
+    print("maximum lengthed word is '{}' ".format(max_word),"and its length is {} ".format(max))
+    return
+
+maximum_lengthed_word('hellow welocome to python pogramming language')
+
+
+
+# finding minimum lengthed word in the string
+
+def maximum_lengthed_word(str):
+    s = str.split()
+    min = len(s[0])
+    min_word = ''
+    for i in s:
+        if len(i) < min:
+            min = len(i)
+            min_word = i
+    
+    print("minimum lengthed word is '{}' ".format(min_word),"and its length is {} ".format(min))
+    return
+
+maximum_lengthed_word('hellow welocome to python pogramming language')
+          
+# reversing string
+a = 'Hellow world'
+print(a[::-1])
+
+
+# palindrome workout
+
+str = input('enter the string you want to check palindrome :')
+if str == str[::-1]:
+    print(str,'is palindrome')
+else:
+    print(str,'is not palindrome')
+
+
+def palindrom_check(str):
+    if str == str[::-1]:
+        print(str,'is palindrome')
+    else:
+        print(str,'is not palindrome')
+
+    return
+
+palindrom_check('sabeel')
+
+
+
+str = input('enter the string you want :')
+rev_str = ''
+for i in str:
+    rev_str = i + rev_str
+
+if str == rev_str:
+    print(str,'is a palindrome')
+else:
+    print(str,'is not palindrome')
+
+
+# Replaces each alphabet in a given string with another alphabet occurring at the n-th position from each of them.
+def replace_with_nth_char(string,n):
+    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    replaced_string = ''
+    for i in string:
+        if i in alphabet:
+            is_lower = i.islower()
+            i = i.lower()
+            replaced_i = alphabet[(alphabet.index(i) + n)%26]
+            if is_lower:
+                replaced_string += replaced_i
+            else:
+                replaced_string += replaced_i.upper()
+        else:
+            replaced_string += i
+    
+    return replaced_string
+
+print(replace_with_nth_char('helloo',1))
+
+
+
+
+
 
 ################################# END STRING ###########################
