@@ -839,8 +839,153 @@ def replace_with_nth_char(string,n):
 print(replace_with_nth_char('helloo',1))
 
 
+# add a word between splited word
+
+str = 'Hello world'
+s=str.split()
+print(s)
+result = ' hoi '.join(s)
+print(result)
+
+def split_and_add(str,add):
+    s = str.split()
+    new = ' '+add+' '
+    result = new.join(s)
+    print(result)
+    return
+
+split_and_add('hello world','hoi')
 
 
 
 
 ################################# END STRING ###########################
+
+
+################################### ARRAY ###############################
+
+#---------------------- 1D aary -------------------#
+
+from array import *
+arr1 = array('i',[1,2,3,4,5,6])
+arr2 = array('d',[1.3,4.5,3.5])
+print(arr1)
+print(arr2)
+print(type(arr1[1]))
+
+# slicing
+print(arr1[::-1])
+
+# append() to add
+arr1.append(7)
+print(arr1)
+
+# insert() to add
+arr1.insert(7,8)
+print(arr1)
+
+# insert() to add
+arr1.insert(0,0)
+print(arr1)
+
+# extend() to add
+arr1.extend([9,10])
+print(arr1)
+print(arr1[0])
+
+#remove() for removal
+arr1.remove(10)
+print(arr1)
+
+#pop() for removel
+arr1.pop()
+print(arr1)
+arr1.pop(2)
+print(arr1)
+
+#formlist() ,list has no this function ,to append a list
+arr1.fromlist([100,101])
+print(arr1)
+
+# index() to find the index() specified item
+print(arr1.index(101))
+
+# reverse() to reverse array
+arr1.reverse()
+print(arr1)
+
+# sum() to find the sum of array
+print(sum(arr1))
+
+# count() to find the count of specified item
+print(arr1.count(1))
+
+# tolist() to convert in list
+print(arr1.tolist())   
+
+# traversing  
+def traverse_array(arr):
+    for i in arr:
+        print(i)
+    return
+
+traverse_array(arr1)
+
+# accessing
+def accssElement(array,index):
+    if index >= len(array):
+        print('no element in this index')
+    else:
+        print(array[index])
+    return
+
+accssElement(arr1,11)
+
+
+
+# creation
+print('choices are, 1 for int array,2  for float array')
+try:
+  choice = int(input('enter the choice you want :'))
+
+
+
+  if choice == 1:
+    length = int(input('enter the length you want to add:'))
+    arrays = array('i',[])
+    print(arrays)
+    print(type(arrays))
+    for i in range(length):
+        num = int(input('enter number:'))
+        arrays.append(num)
+
+
+  if choice == 2:
+    length = int(input('enter the length you want to add:'))
+    arrays = array('d',[])
+    print(arrays)
+    print(type(arrays))
+    for i in range(length):
+        num = float(input('enter item:'))
+        
+        arrays.append(num)
+
+    print(arrays)
+
+except Exception as e:
+    print(e)
+
+
+# searching 
+def search_array(array,value):
+    for idx,x in enumerate(array):
+        if x == value:
+            print('item {}'.format(x),'found at {} position'.format(idx))
+            break
+    else:
+        print('item not found')
+
+    return
+search_array(arr2,4.5)
+
+################################## END ARRAY ###############################
