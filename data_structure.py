@@ -988,4 +988,53 @@ def search_array(array,value):
     return
 search_array(arr2,4.5)
 
+
+# sum
+
+arr1 = array('i',[1,2,3,4,5,6,9])
+found = False  # Initialize a flag to False
+
+for i in range(len(arr1)):
+    for j in range(i + 1, len(arr1)):
+        if arr1[i] + arr1[j] == 10:
+            print("Two numbers with sum 10 are:", arr1[i], arr1[j])
+            found = True  # Set the flag to True if a pair is found
+
+if not found:
+    print("No such numbers found.")
+
+
+
+arr1 = array('i',[1,2,3,4,5,6,5])
+
+newarr = array('i',[])
+print(newarr)
+print('ko')
+found = False
+for i in arr1:
+    sub = 10 - i
+    if sub in newarr:
+        print('numbers are {},{}'.format(i,sub))
+        found = True
+    else:
+        newarr.append(i)
+print(newarr)        
+
+if not found:
+    print('no')
+
+
 ################################## END ARRAY ###############################
+
+################################### RECURSION ################################
+
+def Factorial(n):
+   assert n >=0 and int(n) == n,'the number must be positive integer'
+   if n in [0,1]:
+      return 1
+   else:
+      return n * Factorial(n-1)
+    
+print(Factorial(5))
+
+################################### END ######################################
