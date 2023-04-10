@@ -505,7 +505,7 @@ DLL1 = doublyLL()
 DLL1.insert_empty(5)
 DLL1.add_end(10)
 DLL1.add_begin(0)
-DLL1.add_after(7,5)
+DLL1.add_after(7,5) 
 DLL1.add_before(3,5)
 DLL1.delete_by_value(100)
 DLL1.print_LL()
@@ -559,11 +559,13 @@ def binarySearch(num_list,key):
         elif num_list[mid] > key:
             end = mid -1
     return -1
+value = 5
 pos = binarySearch([1,2,3,4,5],5)
 if pos != -1:
-    print('element found at :',pos)
+    print('itm {0} found at {1} th position'.format(value,pos))
 else:
-    print('element not found') 
+    print(' not found')
+ 
 
 ############################# END BINARY SEARCH ############################
 
