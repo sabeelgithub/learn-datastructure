@@ -61,114 +61,6 @@ print(dict2)
 # end
 ######################### END DICTIONARY ########################  
 
-############################# STACK ############################
-
-# stack implementation using list
-stack = []
-# push can be done with append()
-stack.append(1)
-print(stack)
-stack.append(10)
-print(stack)
-stack.append(100)
-print(stack)
-# pop can be done with pop
-stack.pop()
-print(stack)
-# last value (top()) can be acced usig index
-print(stack[-1])
-# isEmpty() using leng()
-if len(stack) == 0:
-    print('stack is empty')
-
-
-
-# problem
-stack = []
-def push():
-    if len(stack) == n:
-        print('stack is full')
-    else:
-        add = int(input('enter number:'))
-        stack.append(add)
-        print(stack)
-
-def pop():
-    if len(stack) == 0:
-        print('stack is empty')
-    else:
-        stack.pop()
-        print('result is :',stack)
-
-n = int(input('enter limit:'))
-
-while True:
-    print('eneter your choise 1 for push 2 for pop 3 for quit')
-    choice = int(input('enter choice:'))
-    if choice == 1:
-        push()
-    elif choice == 2:   
-        pop()
-    elif choice == 3:
-        break
-    else:
-        print('invalid result')
-
-# stack implementation using deque class of collection moodule
-import collections
-stack = collections.deque()
-print(len(stack))
-stack.append(1)
-print(stack)
-stack.append(20)
-stack.append(50)
-stack.append(100)
-print(stack)
-stack.pop()
-print(stack)
-print(stack[-1])
-if len(stack) == 0:
-    print('stack is empty')
-else:
-    print('stack is not empty')
-
-# stack implementation using LifoQueue class of queue moodule    
-import queue
-stack = queue.LifoQueue()
-stack.put(1)
-print(stack)
-stack.put(20)
-stack.put(30)
-stack.put(40)
-print(stack)
-stack.put(68)
-stack.get()
-stack.get()
-print(stack)
-
-
-# reversing string using stack
-def reversing_string_with_stack(string):
-    stack = []
-
-    for i in string:
-        stack.append(i)
-
-    reversed_string = ''
-    while stack:
-         reversed_string += stack.pop()    
-
-    return reversed_string
-
-lo =reversing_string_with_stack('hello world')
-print(lo)
-
-
-######################## END STACK ######################
-
-
-
-
 
 ##################################### LINKED LIST ########################################
 
@@ -818,6 +710,21 @@ if str == rev_str:
     print(str,'is a palindrome')
 else:
     print(str,'is not palindrome')
+
+
+
+# palindrome logic
+
+num = input('enter anything you want :')
+pal = True
+for i in range(len(num)//2):
+    if num[i] != num[len(num)-i-1]:
+       pal = False
+
+if pal == True:
+    print('its palindrome')
+else:
+    print('not palindrome')
 
 
 # Replaces each alphabet in a given string with another alphabet occurring at the n-th position from each of them.
