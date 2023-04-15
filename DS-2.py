@@ -417,7 +417,7 @@ print('------')
 print(stack1.access())
 
 
-# ------------------ implementation using linked list -------------
+# ------------------ implementation Stack using linked list -------------
 
 class Node:
     def __init__(self,data):
@@ -488,7 +488,7 @@ print('---------')
 #print(obj.delete())
 print(obj)
 
-#--------------- implentation using deque class of collection module-----------------------#
+#--------------- implentation of Stack using deque class of collection module-----------------------#
 
 import collections
 stack = collections.deque()
@@ -608,3 +608,294 @@ print(res)
 
 
 ############################ END STACK ########################
+
+
+############################  QUEUE ########################
+
+# --------- implementation of Queue using unfixed size list---------------#
+class Queue:
+    def __init__(self):
+        self.list = []
+    
+    def __str__(self):
+        values = self.list.reverse()
+        values = [str(i) for i in self.list]
+        return '\n'.join(values)
+    
+    def isEmpty(self):
+        if self.list == []:
+            return True
+        else:
+            return False
+        
+    def enqueue(self,value):
+        self.list.append(value)
+        return f'item {value} added successfully'
+    
+    def dequeue(self):
+        if self.isEmpty():
+            return 'cant delete,bcz queue is empty'
+        else:
+            return self.list.pop(0)
+        
+    def peek(self):
+        if self.isEmpty():
+            return 'queue is empty'
+        else:
+            return self.list[0]
+        
+    def delete(self):
+        
+            self.list = None
+            
+
+queue1 = Queue()
+print(queue1.enqueue(1))
+print(queue1.enqueue(2))
+print(queue1.enqueue(3))
+print('-----')
+print(queue1.dequeue())
+print('-----')
+print(queue1.peek())
+print('-----')
+print(queue1.isEmpty())
+
+print(queue1)
+        
+        
+# --------- implementation  of Queue using unfixed size list (circular queue)---------------#
+
+class Queue:
+    def __init__(self,maxSize):
+        self.list = maxSize * [None]
+        self.max = maxSize
+        self.start = -1
+        self.top = -1
+
+    def __str__(self):
+        values = [str(i)for i in self.list]
+        return ' '.join(values)
+    
+    def isFull(self):
+        if self.top + 1 == self.start:
+            return True
+        elif self.start == 0 and self.top+1== self.max:
+            return True
+        else:
+            return False
+
+    def isEmpty(self):
+        if self.top == -1:
+            return True
+        else:
+            return False 
+        
+    def enqueue(self,value):
+        if self.isFull():
+            return 'cant add,queue is full'
+        else:
+            if self.top + 1 == self.max:
+                self.top = 0
+            else:
+                self.top +=1
+                if self.start == -1:
+                    self.start = 0
+            self.list[self.top] = value
+            return f'item {value} added successfully'
+        
+    def dequeue(self):
+        if self.isEmpty():
+            return 'cant,delete its empty'
+        else:
+            first = self.list[self.start]
+            start = self.start
+            if self.start == self.top:
+                self.start = -1
+                self.top = -1
+            elif self.start + 1 == self.max:
+                self.start = 0
+            else:
+                self.start +=1
+            
+            self.list[start] = None
+            return first
+        
+    def peek(self):
+        if self.isEmpty():
+            return 'queue is empty'
+        else:
+            return self.list[self.start]
+    
+    def delete(self):
+        self.list = self.max * [None]
+        self.start = -1
+        self.top = -1
+
+    
+
+    
+
+queue1 = Queue(5)
+print(queue1.enqueue(1))
+print(queue1.enqueue(2))
+print(queue1.enqueue(3))
+print(queue1.enqueue(4))
+print(queue1.enqueue(5))
+print(queue1.dequeue())
+print(queue1.isFull())
+print(queue1.isEmpty())
+print(queue1.peek())
+print(queue1.delete())
+print(queue1)
+
+#------------------------- implementation Queue using linked list ------------------------#
+
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.ref = None
+
+    def __str__(self):
+        return str(self.data)
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    
+    def __iter__(self):
+        n = self.head
+        while n:
+            yield n
+            n = n.ref
+
+class Queue:
+    def __init__(self):
+        self.LinkedList = LinkedList()
+    
+    def __str__(self):
+        values = [str(i.data) for i in self.LinkedList]
+        return ' '.join(values)
+    
+    def enqueue(self,data):
+        new_node = Node(data)
+        if self.LinkedList.head is None:
+            self.LinkedList.head = new_node
+            return f'item {data} added at empty queue'
+        else:
+            n = self.LinkedList.head
+            while n.ref is not None:
+                n = n.ref
+            n.ref = new_node
+            return f'item {data} added '
+        
+    def enqueue1(self,data):
+        new_node = Node(data)
+        if self.LinkedList.head is None:
+            self.LinkedList.head = new_node
+            self.LinkedList.tail = new_node
+            return f'item {data} added at empty queue'
+        else:
+            self.LinkedList.tail.ref = new_node
+            self.LinkedList.tail = new_node
+            return f'item {data} added '
+    
+    def isEmpty(self):
+        if self.LinkedList.head == None:
+            return True
+        else:
+            return False
+        
+
+    def dequeue(self):
+        if self.isEmpty():
+            return 'cant delete ,queue is empty'
+        else:
+            dlt = self.LinkedList.head
+            self.LinkedList.head = self.LinkedList.head.ref
+            return dlt
+        
+    def peek(self):
+        if self.isEmpty():
+            return 'queue is empty'
+        else:
+            return self.LinkedList.head
+        
+    def delete(self):
+        self.LinkedList.head = None
+        return 'done'
+
+
+    
+
+queue1 = Queue()
+print(queue1.isEmpty())
+print('-------------')
+print(queue1.enqueue1(1))
+print(queue1.enqueue1(2))
+print(queue1.enqueue1(3))
+print(queue1.isEmpty())
+print(queue1.dequeue())
+print('----peek----')
+print(queue1.peek())
+print(queue1)
+
+
+
+
+# -------------------- implementation of Queue using deque class of collection modile --------------- #
+
+import collections 
+queue = collections.deque(maxlen=3)
+queue.append(1)
+print(queue)
+queue.append(2)
+print(queue)
+queue.append(3)
+print(queue)
+queue.popleft()
+print(queue)
+queue.clear()
+print(queue)
+
+#---------- implementation of Queue using Queue class of queue module ---------------#
+
+import queue
+
+q = queue.Queue()
+print(q.qsize())
+print(q.empty())
+q.put(1)
+q.put(2)
+q.put(3)
+print(q.empty())
+print(q)
+print(q.qsize())
+print(q.full())
+print(q.get())
+print(q.qsize())
+    
+
+#---------- implementation of Queue using Queue class of multiprocessing module ---------------#       
+        
+import multiprocessing
+
+q = multiprocessing.Queue()
+print(q.qsize())
+print(q.empty())
+q.put(1)
+q.put(2)
+q.put(3)
+print(q.qsize())
+print(q.empty())
+print(q)
+print(q.qsize())
+print(q.full())
+print(q.get())
+print(q.qsize())
+    
+
+
+
+
+############################ END QUEUE ########################

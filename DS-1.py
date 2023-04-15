@@ -727,6 +727,18 @@ else:
     print('not palindrome')
 
 
+# reverse logic
+
+str1 = 'Hellow world'
+
+rev_str = ''
+
+for i in str1:
+    rev_str = i + rev_str  
+    
+print(rev_str)
+
+
 # Replaces each alphabet in a given string with another alphabet occurring at the n-th position from each of them.
 def replace_with_nth_char(string,n):
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -764,6 +776,19 @@ def split_and_add(str,add):
     return
 
 split_and_add('hello world','hoi')
+
+
+# reverse string
+
+str1 = 'Hellow world'
+new = list(str1)
+print(new)
+
+for i in range(len(new)//2):
+    new[i],new[len(new)-i-1] = new[len(new)-i-1],new[i]
+
+reversed_string = ''.join(new)
+print(reversed_string)
 
 
 
@@ -931,6 +956,26 @@ print(newarr)
 
 if not found:
     print('no')
+
+
+# reverse array
+arr = [1,2,3,4,5]
+
+# reverse using slicing
+print(arr[::-1])
+
+# using reverse method
+arr.reverse()
+print(arr)
+
+# reverse array logic
+
+arr = [1,4,5,7,3,2,5]
+
+for i in range(len(arr)//2):
+    arr[i],arr[len(arr)-i-1] = arr[len(arr)-i-1],arr[i]
+    
+print(arr)
 
 
 ################################## END ARRAY ###############################
