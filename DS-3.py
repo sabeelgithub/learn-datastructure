@@ -211,4 +211,240 @@ print(list)
 for i in range(len(list)):
     print(heapq.heappop(list))
 
+
+# ---------- min-heap ----------------
+
+class MinHeap:
+    def __init__(self):
+        self.heap = []
+
+    def parentIndex(self,i):
+        return (i - 1) // 2
+
+    def LeftChildIndex(self,i):
+        return 2 * i + 1
+
+    def RightChildIndex(self,i):
+        return 2 * i + 2
+
+    def get_min(self):
+        if self.heap:
+            return self.heap[0]
+        else:
+            return 'heap is empty'
+
+    def insert(self,k):
+        self.heap.append(k)
+        i = len(self.heap)-1
+        while i!=0 and self.heap[self.parentIndex(i)] > self.heap[i]:
+            self.heap[self.parentIndex(i)],self.heap[i] = self.heap[i],self.heap[self.parentIndex(i)]
+            i = self.parentIndex(i)
+        return f'item {k} is added in heap'
+
+    def min_heapify(self, i):
+        l = self.LeftChildIndex(i)
+        r = self.RightChildIndex(i)
+        smallest = i
+        if l < len(self.heap) and self.heap[l] < self.heap[smallest]:
+            smallest = l
+        if r < len(self.heap) and self.heap[r] < self.heap[smallest]:
+            smallest = r
+        if smallest != i:
+            self.heap[i], self.heap[smallest] = self.heap[smallest], self.heap[i]
+            self.min_heapify(smallest)
+
+    def extract_min(self):
+        if not self.heap:
+            return 'heap is empty'
+        if self.heap == 1:
+            return self.heap.pop()
+        else:
+            temp = self.heap[0]
+            self.heap[0] = self.heap[len(self.heap)-1]
+            self.heap[len(self.heap)-1] = temp
+            self.heap.pop()
+            self.min_heapify(0)
+            
+
+            return temp
+    
+    def delete(self,i):
+        if not self.heap:
+            return 'heap is empty'
+        else:
+            temp = self.heap[i]
+            self.heap[i] = self.heap[len(self.heap)-1]
+            self.heap[len(self.heap)-1] = temp
+            self.heap.pop()
+            self.min_heapify(i)
+            return f'item {temp} deleted'
+
+
+        
+
+
+    
+
+    
+
+
+
+min = MinHeap()
+print(min.get_min())
+print(min.heap)
+print(min.insert(10))
+print(min.heap)
+print(min.get_min())
+print(min.parentIndex(0))
+print(min.insert(1))
+print(min.heap)
+print(min.get_min())
+print(min.insert(100))
+print(min.heap)
+print(min.insert(5))
+print(min.heap)
+print(min.insert(50))
+print(min.heap)
+print(min.insert(0.5))
+print(min.heap)
+print(min.extract_min())
+print(min.heap)
+print(min.delete(1))
+print(min.heap)
+
+#----------------- max-heap -----------------
+
+class MinHeap:
+    def __init__(self):
+        self.heap = []
+
+    def parentIndex(self,i):
+        return (i - 1) // 2
+
+    def LeftChildIndex(self,i):
+        return 2 * i + 1
+
+    def RightChildIndex(self,i):
+        return 2 * i + 2
+
+    def get_max(self):
+        if self.heap:
+            return self.heap[0]
+        else:
+            return 'heap is empty'
+
+    def insert(self,k):
+        self.heap.append(k)
+        i = len(self.heap)-1
+        while i!=0 and self.heap[self.parentIndex(i)] < self.heap[i]:
+            self.heap[self.parentIndex(i)],self.heap[i] = self.heap[i],self.heap[self.parentIndex(i)]
+            i = self.parentIndex(i)
+        return f'item {k} is added in heap'
+
+    def min_heapify(self, i):
+        l = self.LeftChildIndex(i)
+        r = self.RightChildIndex(i)
+        largest = i
+        if l < len(self.heap) and self.heap[l] > self.heap[largest]:
+            largest = l
+        if r < len(self.heap) and self.heap[r] > self.heap[largest]:
+            largest = r
+        if largest != i:
+            self.heap[i], self.heap[largest] = self.heap[largest], self.heap[i]
+            self.min_heapify(largest)
+
+    def extract_max(self):
+        if not self.heap:
+            return 'heap is empty'
+        if self.heap == 1:
+            return self.heap.pop()
+        else:
+            temp = self.heap[0]
+            self.heap[0] = self.heap[len(self.heap)-1]
+            self.heap[len(self.heap)-1] = temp
+            self.heap.pop()
+            self.min_heapify(0)
+            
+
+            return temp
+    
+    def delete(self,i):
+        if not self.heap:
+            return 'heap is empty'
+        else:
+            temp = self.heap[i]
+            self.heap[i] = self.heap[len(self.heap)-1]
+            self.heap[len(self.heap)-1] = temp
+            self.heap.pop()
+            self.min_heapify(i)
+            return f'item {temp} deleted'
+
+
+        
+
+
+    
+
+    
+
+
+
+min = MinHeap()
+print(min.get_max())
+print(min.heap)
+print(min.insert(10))
+print(min.heap)
+print(min.get_max())
+print(min.parentIndex(0))
+print(min.insert(1))
+print(min.heap)
+print(min.get_max())
+print(min.insert(100))
+print(min.heap)
+print(min.insert(5))
+print(min.heap)
+print(min.insert(50))
+print(min.heap)
+print(min.insert(0.5))
+print(min.heap)
+print(min.extract_max())
+print(min.heap)
+print(min.delete(1))
+print(min.heap)
+
 ########################### END HEAP ############################
+
+
+
+############################ HEAP SORT ###########################
+
+def heapify(arr,i):
+    smallest = i
+    l = 2 * i +1
+    r = 2*i +2
+    if l < len(arr) and arr[l] < arr[smallest]:
+        smallest = l
+    if r < len(arr) and arr[r] < arr[smallest]:
+        smallest = r
+    if smallest != i:
+        arr[i], arr[smallest] = arr[smallest], arr[i]
+        heapify(arr,smallest)
+    
+    return arr
+
+
+def heapSort(arr):
+    for i in range(int(len(arr)/2)-1,-1,-1):
+        heapify(arr,i)
+    
+    for i in range(len(arr)-1,0,-1):
+        arr[i],arr[0] = arr[0],arr[i]
+        heapify(arr,i)
+        arr.reverse()
+        return arr
+
+
+print(heapSort([56,8,9,0,5]))
+
+
+############################ END HEAP SORT #######################
