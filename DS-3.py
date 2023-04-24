@@ -448,3 +448,285 @@ print(heapSort([56,8,9,0,5]))
 
 
 ############################ END HEAP SORT #######################
+
+
+############################ GRAPH ##############################
+
+# matrix representation
+# adding  nodes to the graph, dont bother about whether it is directed,weighted,undirected etc...
+
+nodes = []
+graph = []
+node_count = 0
+def add_node(v):
+    global node_count 
+    if v in nodes:
+        print(v,'is already present in the node')
+    else:
+        node_count = node_count + 1
+        nodes.append(v)
+        for n in graph:
+            n.append(0)
+        temp = []
+        for i in range(node_count):
+            temp.append(0)
+        graph.append(temp)
+
+# --------unweighted and undirected
+
+# def add_edge(v1,v2):
+#     if v1 not in nodes:
+#         print(v1,'is not present in nodes')
+#     elif v2 not in nodes:
+#         print(v2,'is not present in nodes')
+#     else:
+#         indexv1 = nodes.index(v1)
+#         indexv2 = nodes.index(v2)
+#         graph[indexv1][indexv2]=1
+#         graph[indexv2][indexv1]=1
+
+# -------in the case of weighted graph
+ 
+def add_edge(v1,v2,cost):
+    if v1 not in nodes:
+        print(v1,'is not present in nodes')
+    elif v2 not in nodes:
+        print(v2,'is not present in nodes')
+    else:
+        indexv1 = nodes.index(v1)
+        indexv2 = nodes.index(v2)
+        graph[indexv1][indexv2]= cost
+        graph[indexv2][indexv1]= cost
+
+# -------in the case of directed and unweighted
+
+# def add_edge(v1,v2):
+#     if v1 not in nodes:
+#         print(v1,'is not present in nodes')
+#     elif v2 not in nodes:
+#         print(v2,'is not present in nodes')
+#     else:
+#         indexv1 = nodes.index(v1)
+#         indexv2 = nodes.index(v2)
+#         graph[indexv1][indexv2]=1
+
+# -------in the case of weighted and directed
+
+# def add_edge(v1,v2,cost):
+#     if v1 not in nodes:
+#         print(v1,'is not present in nodes')
+#     elif v2 not in nodes:
+#         print(v2,'is not present in nodes')
+#     else:
+#         indexv1 = nodes.index(v1)
+#         indexv2 = nodes.index(v2)
+#         graph[indexv1][indexv2]= cost
+
+# deleting node
+
+def delete_node(v):
+    global node_count
+    if v not in nodes:
+        print(v,'not in graph')
+    else:
+        indexV = nodes.index(v)
+        node_count = node_count -1
+        nodes.remove(v)
+        graph.pop(indexV)
+        for i in graph:
+            i.pop(indexV)
+
+# deleting edge in undirected and unweighted graph/undirected and weighted/
+def delete_edge(v1,v2):
+    if v1 not in nodes:
+        print(v1,'not found in graph')
+    elif v2 not in nodes:
+        print(v2,'not found in graph')
+    else:
+        indexV1 = nodes.index(v1)
+        indexV2 = nodes.index(v2)
+        graph[indexV1][indexV2] = 0
+        graph[indexV2][indexV1] = 0
+
+# deleting edge in directed and unweighted graph/directed and weighted/
+def delete_edge(v1,v2):
+    if v1 not in nodes:
+        print(v1,'not found in graph')
+    elif v2 not in nodes:
+        print(v2,'not found in graph')
+    else:
+        indexV1 = nodes.index(v1)
+        indexV2 = nodes.index(v2)
+        graph[indexV1][indexV2] = 0
+        
+
+        
+        
+
+def print_graph():
+    for i in range(node_count):
+        for j in range(node_count):
+            print(graph[i][j],end=' ')
+        print()
+
+print(nodes)
+print(graph)
+print(node_count)
+add_node('A')
+print(nodes)
+print(graph)
+print(node_count)
+add_node('B')
+add_node('C')
+add_node('D')
+add_edge('A','B',10)
+add_edge('A','C',8)
+add_edge('B','D',6)
+print(nodes)
+print(graph)
+print(node_count)
+print_graph()
+delete_node('D')
+delete_node('J')
+print(nodes)
+print(graph)
+print_graph()
+delete_edge('A','B')
+print()
+print_graph()
+print(nodes)
+
+
+# list representation
+
+graph = {}
+def add_node(v):
+    if v in graph:
+        print(v,'is already present in the graph')
+    else:
+        graph[v] = []
+
+# # in the case of undirected and unweighted graph 
+# def add_edge(v1,v2):
+#     if v1 not in graph:
+#         print(v1,'not present in graph')
+#     elif v2 not in graph:
+#         print(v2,'not present in graph')
+#     else:
+#         graph[v1].append(v2)
+#         graph[v2].append(v1)
+
+# # in the case of undirected and weighted graph
+
+def add_edge(v1,v2,cost):
+    if v1 not in graph:
+        print(v1,'not present in graph')
+    elif v2 not in graph:
+        print(v2,'not present in graph')
+    else:
+        graph[v1].append([v2,cost])
+        graph[v2].append([v1,cost])
+
+# in the case of directed and weighted graph
+
+# def add_edge(v1,v2,cost):
+#     if v1 not in graph:
+#         print(v1,'not present in graph')
+#     elif v2 not in graph:
+#         print(v2,'not present in graph')
+#     else:
+#         graph[v1].append([v2,cost])
+        
+# in the case of directed and unweighted graph
+
+# def add_edge(v1,v2):
+#     if v1 not in graph:
+#         print(v1,'not present in graph')
+#     elif v2 not in graph:
+#         print(v2,'not present in graph')
+#     else:
+#         graph[v1].append(v2)
+
+# undirected/directed and unweighted graph
+# def delete_node(v):
+#     if v not in graph:
+#         print(v,'not in graph')
+#     else:
+#         graph.pop(v)
+#         for i in graph:
+#             list1 = graph[i]
+#             if v in list1:
+#                 list1.remove(v)
+
+# undirected/directed and weighted graph
+def delete_node(v):
+    if v not in graph:
+        print(v,'not in graph')
+    else:
+        graph.pop(v)
+        for i in graph:
+            list1 = graph[i]
+            for j in list1:
+                if v == j[0]:
+                    list1.remove(j)
+                    break
+
+# undirected and unweighted graph
+# def delete_edge(v1,v2):
+#     if v1 not in graph:
+#         print(v1,'not in graph')
+#     elif v2 not in graph:
+#         print(v2,'not in graph')
+#     else:
+#         if v2 in graph[v1]:
+#           graph[v1].remove(v2)
+#           graph[v2].remove(v1)
+
+# directed and unweighted graph
+# def delete_edge(v1,v2):
+#     if v1 not in graph:
+#         print(v1,'not in graph')
+#     elif v2 not in graph:
+#         print(v2,'not in graph')
+#     else:
+#         if v2 in graph[v1]:
+#           graph[v1].remove(v2)
+          
+# undirected and weighted graph
+def delete_edge(v1,v2,cost):
+    if v1 not in graph:
+        print(v1,'not in graph')
+    elif v2 not in graph:
+        print(v2,'not in graph')
+    else:
+        if [v2,cost] in graph[v1]:
+          graph[v1].remove([v2,cost])
+          graph[v2].remove([v1,cost])
+          
+# # directed and weighted graph
+# def delete_edge(v1,v2,cost):
+#     if v1 not in graph:
+#         print(v1,'not in graph')
+#     elif v2 not in graph:
+#         print(v2,'not in graph')
+#     else:
+#         if [v2,cost] in graph[v1]:
+#           graph[v1].remove([v2,cost])
+          
+
+
+print(graph)
+add_node('A')
+add_node('B')
+print(graph)
+add_edge('A','B',10)
+print(graph)
+add_node('C')
+print(graph)
+add_edge('A','C',8)
+print(graph)
+# delete_node('B')
+delete_edge('A','C',8)
+print(graph)
+
+########################### END GRAPH #############################
