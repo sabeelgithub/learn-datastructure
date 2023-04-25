@@ -607,25 +607,25 @@ def add_node(v):
         graph[v] = []
 
 # # in the case of undirected and unweighted graph 
-# def add_edge(v1,v2):
-#     if v1 not in graph:
-#         print(v1,'not present in graph')
-#     elif v2 not in graph:
-#         print(v2,'not present in graph')
-#     else:
-#         graph[v1].append(v2)
-#         graph[v2].append(v1)
-
-# # in the case of undirected and weighted graph
-
-def add_edge(v1,v2,cost):
+def add_edge(v1,v2):
     if v1 not in graph:
         print(v1,'not present in graph')
     elif v2 not in graph:
         print(v2,'not present in graph')
     else:
-        graph[v1].append([v2,cost])
-        graph[v2].append([v1,cost])
+        graph[v1].append(v2)
+        graph[v2].append(v1)
+
+# # in the case of undirected and weighted graph
+
+# def add_edge(v1,v2,cost):
+#     if v1 not in graph:
+#         print(v1,'not present in graph')
+#     elif v2 not in graph:
+#         print(v2,'not present in graph')
+#     else:
+#         graph[v1].append([v2,cost])
+#         graph[v2].append([v1,cost])
 
 # in the case of directed and weighted graph
 
@@ -672,15 +672,15 @@ def delete_node(v):
                     break
 
 # undirected and unweighted graph
-# def delete_edge(v1,v2):
-#     if v1 not in graph:
-#         print(v1,'not in graph')
-#     elif v2 not in graph:
-#         print(v2,'not in graph')
-#     else:
-#         if v2 in graph[v1]:
-#           graph[v1].remove(v2)
-#           graph[v2].remove(v1)
+def delete_edge(v1,v2):
+    if v1 not in graph:
+        print(v1,'not in graph')
+    elif v2 not in graph:
+        print(v2,'not in graph')
+    else:
+        if v2 in graph[v1]:
+          graph[v1].remove(v2)
+          graph[v2].remove(v1)
 
 # directed and unweighted graph
 # def delete_edge(v1,v2):
@@ -693,15 +693,15 @@ def delete_node(v):
 #           graph[v1].remove(v2)
           
 # undirected and weighted graph
-def delete_edge(v1,v2,cost):
-    if v1 not in graph:
-        print(v1,'not in graph')
-    elif v2 not in graph:
-        print(v2,'not in graph')
-    else:
-        if [v2,cost] in graph[v1]:
-          graph[v1].remove([v2,cost])
-          graph[v2].remove([v1,cost])
+# def delete_edge(v1,v2,cost):
+#     if v1 not in graph:
+#         print(v1,'not in graph')
+#     elif v2 not in graph:
+#         print(v2,'not in graph')
+#     else:
+#         if [v2,cost] in graph[v1]:
+#           graph[v1].remove([v2,cost])
+#           graph[v2].remove([v1,cost])
           
 # # directed and weighted graph
 # def delete_edge(v1,v2,cost):
@@ -712,21 +712,124 @@ def delete_edge(v1,v2,cost):
 #     else:
 #         if [v2,cost] in graph[v1]:
 #           graph[v1].remove([v2,cost])
-          
+
+# recursive approach
+visited = set()
+def DFS(node,visited,graph):
+    if node not in graph:
+        print(node,'not present')
+        return
+    if node not in visited:
+        print(node)
+        visited.add(node)
+        for i in graph[node]:
+            DFS(i,visited,graph)
+
+# iterative approach
+def DFSiterative(node,graph):
+    visited = set()
+    if node not in graph:
+        print(node,'not present')
+        return
+    stack = []
+    stack.append(node)
+    while stack:
+        current = stack.pop()
+        if current not in visited:
+            print(current)
+            visited.add(current)
+            for i in graph[current]:
+                stack.append(i)
+
+def BFS(node,graph):
+    visited = set()
+    if node not in graph:
+        print(node,'not present')
+        return
+    queue = []
+    queue.append(node)
+    while queue:
+        current = queue.pop(0)
+        if current not in visited:
+            print(current)
+            visited.add(current)
+            for i in graph[current]:
+                queue.append(i)
 
 
 print(graph)
 add_node('A')
 add_node('B')
-print(graph)
-add_edge('A','B',10)
-print(graph)
 add_node('C')
+add_node('D')
+add_node('E')
 print(graph)
-add_edge('A','C',8)
-print(graph)
-# delete_node('B')
-delete_edge('A','C',8)
+add_edge('A','B')
+
+add_edge('A','D')
+add_edge('B','E')
+add_edge('B','D')
+add_edge('C','D')
+add_edge('D','E')
 print(graph)
 
+print(graph)
+add_edge('A','C')
+print(graph)
+# delete_node('B')
+#delete_edge('A','C')
+print(graph)
+DFS('A',visited,graph)
+print('iterative approach')
+DFSiterative('A',graph)
+
+print('BFS')
+BFS('A',graph)
 ########################### END GRAPH #############################
+
+
+############################# TRIE ###############################
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.endOfString = False
+
+class Trie:
+    def __init__(self): 
+        self.root = TrieNode()
+    
+    def insertString(self,word):
+        current = self.root
+        for i in word:
+            ch = i
+            node = current.children.get(ch)
+            if node == None:
+                node = TrieNode()
+                current.children.update({ch:node})
+            current = node
+        current.endOfString = True
+        print('successfully inserted')
+
+    def searchString(self,word):
+        currentNode = self.root
+        for i in word:
+            node = currentNode.children.get(i)
+            if node == None:
+                return False
+            currentNode = node
+        if currentNode.endOfString == True:
+            return True
+        else:
+            return False
+
+
+newTrie = Trie()
+newTrie.insertString('sabeel')
+print(newTrie.searchString('sabeel'))
+print(newTrie.searchString('sabee'))
+print(newTrie.searchString('naseeb'))
+        
+        
+
+############################# END TRIE ###########################
