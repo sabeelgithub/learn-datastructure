@@ -418,33 +418,36 @@ print(min.heap)
 
 ############################ HEAP SORT ###########################
 
-def heapify(arr,i):
+def heapify(arr,n,i):
     smallest = i
-    l = 2 * i +1
-    r = 2*i +2
-    if l < len(arr) and arr[l] < arr[smallest]:
+    l = 2*i + 1
+    r = 2*i + 2
+    if l < n and arr[l] < arr[smallest]:
+        print('ok')
         smallest = l
-    if r < len(arr) and arr[r] < arr[smallest]:
+    if r < n and arr[r] < arr[smallest]:
         smallest = r
     if smallest != i:
-        arr[i], arr[smallest] = arr[smallest], arr[i]
-        heapify(arr,smallest)
-    
+        arr[i],arr[smallest] = arr[smallest],arr[i]
+        heapify(arr,n,smallest)
+
     return arr
 
-
 def heapSort(arr):
-    for i in range(int(len(arr)/2)-1,-1,-1):
-        heapify(arr,i)
-    
-    for i in range(len(arr)-1,0,-1):
+    n = len(arr)
+    for i in range(int(n/2)-1,-1,-1):
+        print('lo')
+        heapify(arr,n,i)
+
+    for i in range(n-1,0,-1):
+        print('ka')
         arr[i],arr[0] = arr[0],arr[i]
-        heapify(arr,i)
-        arr.reverse()
+        heapify(arr,n,0)
+        
         return arr
 
-
-print(heapSort([56,8,9,0,5]))
+lo = [6,9,7,8,4]
+print(heapSort(lo))
 
 
 ############################ END HEAP SORT #######################
