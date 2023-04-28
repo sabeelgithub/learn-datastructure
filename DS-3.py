@@ -52,10 +52,13 @@ class BST:
             self.rchild.preOrder()
 
     # inorder traversal in BST
+    
     def inOrder(self):
+        arr = []
         if self.lchild:
             self.lchild.inOrder()
         print(self.key,end='--->')
+        arr.append(self.key)
         if self.rchild:
             self.rchild.inOrder()
     
@@ -417,7 +420,7 @@ print(min.heap)
 
 
 ############################ HEAP SORT ###########################
-
+   
 def heapify(arr,n,i):
     smallest = i
     l = 2*i + 1
