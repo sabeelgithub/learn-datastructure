@@ -1,0 +1,12 @@
+import collections
+stack = collections.deque()
+print(stack)
+print(len(stack))
+stack.append(5)
+stack.append(10)
+stack.append(15)
+stack.append(20)
+print(stack)
+print(stack[-1])
+stack.clear()
+print(stack)
