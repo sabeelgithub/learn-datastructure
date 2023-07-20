@@ -61,3 +61,6 @@ n = len(array)-1
 merged_sort2 = mergeSort2(array,0,n)
 print(merged_sort2,'pivot last')
 
+# Time complexity - O(nlogn)
+# Space complexity - O(1) 
+
