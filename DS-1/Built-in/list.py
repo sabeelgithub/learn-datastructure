@@ -61,10 +61,6 @@ thislist.pop(0)
 print(thislist)
 
 for i in thislist:
-    if type(i)==int:
-        thislist.remove(i)
-
-for i in thislist:
     if isinstance(i,int):
         thislist.remove(i)
 
