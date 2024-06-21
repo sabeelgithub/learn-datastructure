@@ -10,9 +10,9 @@ list04 = list((2,"k",4))
 list05 = list({1,3,4,"lo"})
 list06 = list({"one":1,"two":'two'})
 
-
 thislist = list(('hlo','hot','koi'))
 print(thislist)
+
 #slicing
 print(thislist[0:2])
 print(thislist[:2])
@@ -20,28 +20,33 @@ print(thislist[:])
 print(thislist[0:])
 print(thislist[-3:])
 print(thislist[-3:-1])
+
 # assigning
 thislist[0] = 6
 print(thislist)
-# append()
+
+# append() => append method used for add a value at end of the list
 thislist.append(9)
 thislist.append(True)
 thislist.append(None)
 thislist.append('boss')
 print(thislist)
-# insert() 
+
+# insert() => insert method is used for adding an element on position we want ,insert(specify index,specify element to add)
 thislist.insert(0,8)
 thislist.insert(1,False)
 thislist.insert(2,None)
 thislist.insert(4,'sabi')
 print(thislist)
-# extend()
+
+# extend() => using extend we can add elements of iterables to list
 thislist.extend(('anshu','pottathyee',6))
 thislist.extend(['anshu','pottathyee',6])
 thislist.extend({'anshu','pottathyee',6})
 thislist.extend({'name':'sabeel','age':22})
 thislist.extend('iterable')
 print(thislist)
+
 # remove()
 thislist.remove('name')
 thislist.remove('age')
