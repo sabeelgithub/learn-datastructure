@@ -47,17 +47,19 @@ thislist.extend({'name':'sabeel','age':22})
 thislist.extend('iterable')
 print(thislist)
 
-# remove()
+# remove() = > remove method using for removing an element from list,we can specify elements inside remove method
 thislist.remove('name')
 thislist.remove('age')
-print(thislist)
-# pop()
-thislist.pop()
-thislist.pop(0)
 thislist.remove(False)
 thislist.remove(True)
-
 print(thislist)
+
+
+# pop() => pop method is used for removing elements from list by specifyind index number of the list
+thislist.pop() # pop method without specify any index will remove last elements of the list
+thislist.pop(0)
+print(thislist)
+
 for i in thislist:
     if type(i)==int:
         thislist.remove(i)
