@@ -72,34 +72,20 @@ print(thislist)
 thislist.sort(reverse=True)
 print(thislist)
 
-# Q-Remove all integers in the list
-li = [1,2,3,"f",4,5]
-
-li = [i for i in li if not isinstance(i,int)]
-
-
-
-
-# isinstance()
-my_list = ['apple', 123, 'orange', 3.14, True, 'banana', 'grape']
-my_list = [item for item in my_list if not isinstance(item, str)]
-print(my_list)
-
-
-# index() : it returns the index number specified value
+# index() => it returns the index number specified value
 list1 = [1,2,3,4,5,6,'one']
 print(list1.index('one'))
 
-# count() and sum()
+# count() => it return the count of specified value in the list
 listm = [1,1,2,3,4]
 print(listm.count(1))
+
+# sum() => it return the sum of elements in the iterables 
 print(sum(listm))
+
+# max() = > it return the max  elements in the iterables 
 l = [1,2,3,4,5,6,7]
 print(max(l))
-
-list1 = [1,2,3,4,5]
-list1 = [str(i) for i in list1]
-print(list1)
 
 # list comprehension
 list = ['apple','grape','watermelon','banana']
@@ -119,14 +105,16 @@ print(solist)
 top = [x for x in list if 'b' in x]
 print(top)
 
-# copy()
+# copy() => copy method is used for copying list
 print(thislist)
 new = thislist.copy()
 print(new)
-# reverse()
+
+# reverse() => reverse method is used for reversing the list
 new.reverse()
 print(new)
 
+# del keyword is deleting the entire list and also by specifying the index of elements
 del thislist[0]
 del thislist[1]
 del thislist[2]
@@ -134,8 +122,18 @@ del thislist[3]
 del thislist[4]
 print(thislist)
 
+# clear => clear method is used for clearing list
 thislist.clear()
 print(thislist)
+
+# Q-Remove all integers in the list
+li = [1,2,3,"f",4,5]
+
+li = [i for i in li if not isinstance(i,int)]
+
+
+
+
 
 setnew1 = [1,3,'one',True]
 setnew2 = [1,3,'one',True]
