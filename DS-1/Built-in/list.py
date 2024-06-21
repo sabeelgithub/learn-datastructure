@@ -126,41 +126,25 @@ print(thislist)
 thislist.clear()
 print(thislist)
 
-# Q-Remove all integers in the list
-li = [1,2,3,"f",4,5]
-
-li = [i for i in li if not isinstance(i,int)]
-
-
-
-
-
 setnew1 = [1,3,'one',True]
 setnew2 = [1,3,'one',True]
 
-
+# set can be add and multply
 setnew = setnew1 + setnew2
 print(setnew)
 setnew = setnew1 * 3
 print(setnew)
 
-# in to tuple
-into_tuple = tuple(setnew1)
-print(into_tuple)
+# set can be converted to tuple using tuple() and to set using set() 
 
-# in to set
-into_set = set(setnew2)
-print(into_set)
-
-
+# join() method is used joing all elements of iterables
 myList = ["John", "Peter", "Vicky"]
-
 x = ' '.join(myList)
-
 print(x)
 
-# end
+# Q-Remove all integers in the list
+li = [1,2,3,"f",4,5]
 
-
+li = [i for i in li if not isinstance(i,int)]
 
 ################ END LIST #################
