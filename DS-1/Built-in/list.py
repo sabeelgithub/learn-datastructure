@@ -60,20 +60,25 @@ thislist.pop() # pop method without specify any index will remove last elements 
 thislist.pop(0)
 print(thislist)
 
-for i in thislist:
-    if isinstance(i,int):
-        thislist.remove(i)
-
-for i in thislist:
-    if i == None:
-        thislist.remove(i)
-
+""" sort() => sort method is used for sorting list ,
+in the case of integer list it order in ascendign order,
+in the case of integer list it order in alpha neumerical asceding order,
+revers=True is used for desending
+this mehtod not work in the case of list with multiple data types """
 
 thislist.sort()
 print(thislist)
 
 thislist.sort(reverse=True)
 print(thislist)
+
+# Q-Remove all integers in the list
+li = [1,2,3,"f",4,5]
+
+li = [i for i in li if not isinstance(i,int)]
+
+
+
 
 # isinstance()
 my_list = ['apple', 123, 'orange', 3.14, True, 'banana', 'grape']
