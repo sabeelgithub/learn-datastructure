@@ -1,15 +1,15 @@
-array = [4,7,0,1,6,7,3]
-print(array,'orginal array')
-# insertion sort
-def insertionSort(arr):
+def selectionSort(arr):
     for i in range(len(arr)-1):
-        key = i
-        while key>0 and arr[key-1]>arr[key]:
-            arr[key-1],arr[key]=arr[key],arr[key-1]
-            key -= 1
+        min_index = i
+        for j in range(i+1,len(arr)):
+            if arr[min_index] > arr[j]:
+                min_index = j
+
+        arr[min_index],arr[i] =arr[i],arr[min_index]
+
     return arr
-insertion_sorted = insertionSort(array)
-print(insertion_sorted,'insertion sorted')
+
+print(selectionSort([2,5,6,3,8,6,8]))
 
 # O(n^2) T
 # O(1) S
